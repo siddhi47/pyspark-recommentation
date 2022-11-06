@@ -8,6 +8,7 @@ This is a graduate project for Distributed Systems.
 - Docker
 - Pyspark
 - AWS S3 and EC2
+- Flask API
 ---
 ## Authors
 - Gaurab Subedi
