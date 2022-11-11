@@ -1,3 +1,8 @@
-*/__pycache__.py
 data
 docker-hadoop
+.env
+
+# ignore pycache
+__pycache__/
+
+tmp
