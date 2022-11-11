@@ -18,4 +18,4 @@ This is a graduate project for Distributed Systems.
 ## Authors
 - Gaurab Subedi
 - Siddhi Kiran Bajracharya
-- Unish Rarnikar
+- Unish Rajkarnikar
