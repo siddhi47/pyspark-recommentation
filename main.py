@@ -96,7 +96,11 @@ def predict(user_id, n):
     #conf.set("spark.executor.memory", "10g")
 
     spark = SparkSession.builder.config(conf=conf).getOrCreate()
+    if not os.path.exists("tmp/als_model"):
+        os.makedirs("tmp/als_model", exist_ok=True)
+
     download_model(os.getenv("S3_BUCKET"), "models/als_model", "tmp/models/als.zip")
+
     model = load_model("tmp/models/als")
     mongo_client = MongoClient(os.getenv("MONGO_URL"))
     book_list = get_recommendations_for_one_user(
