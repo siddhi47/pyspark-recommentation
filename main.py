@@ -17,6 +17,7 @@ from recommendation_pipeline.inference import (
     get_recommendations_for_all_users,
 )
 from pymongo import MongoClient
+import zipfile
 
 def parse_args():
     parser = ArgumentParser()
@@ -100,6 +101,9 @@ def predict(user_id, n):
         os.makedirs("tmp/models", exist_ok=True)
 
     download_model(os.getenv("S3_BUCKET"), "models/als_model", "tmp/models/als.zip")
+    #unzip model
+    with zipfile.ZipFile("tmp/models/als.zip", "r") as zip_ref:
+        zip_ref.extractall("tmp/models/als_model")
 
     model = load_model("tmp/models/als")
     mongo_client = MongoClient(os.getenv("MONGO_URL"))
