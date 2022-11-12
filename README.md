@@ -1,5 +1,4 @@
 ## Pyspark Recommendation System
-
 This is a graduate project for Distributed Systems.
 
 ## Tools and Technology used:
