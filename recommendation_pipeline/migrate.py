@@ -54,6 +54,12 @@ def migrate_to_mongo_from_s3(
     logger.info("Downloaded file from s3")
     logger.info("Uploading file to mongodb")
     df = pd.read_csv("tmp/{}".format(os.path.basename(s3_file)), sep=";")
+
+    if "Rating" in s3_file or "Book" in s3_file:
+        df["ISBN"] = pd.to_numeric(df["ISBN"], errors="coerce")
+        df.dropna(subset=["ISBN"], inplace=True)
+        df["ISBN"] = df["ISBN"].astype(int)
+
     try:
         db[mongo_collection].drop()
         db[mongo_collection].insert_many(df.to_dict("records"))
