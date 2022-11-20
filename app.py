@@ -14,12 +14,15 @@ mongo = pymongo.MongoClient(app.config["MONGO_URI"])
 
 @app.route("/api/v1/books_recommendation_for_user/<user_id>", methods=["GET"])
 def get_books_for_user(user_id):
-    books = mongo[os.getenv("MONGO_DB")][
-        os.getenv("MONGO_COLLECTION_PREDICTIONS")
-    ].find_one({"USER-ID": int(user_id)})
+    try:
+        books = mongo[os.getenv("MONGO_DB")][
+            os.getenv("MONGO_COLLECTION_PREDICTIONS")
+        ].find_one({"USER-ID": int(user_id)})
 
-    return jsonify(books["Books"])
-
+        return jsonify(books["Books"])
+    except Exception as e:
+        logging.error(e)
+        return jsonify([])
 
 if __name__ == "__main__":
     app.run(debug=True)
