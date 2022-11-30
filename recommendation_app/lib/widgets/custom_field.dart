@@ -10,6 +10,7 @@ class CustomField extends StatelessWidget {
     this.visibility,
     this.obscureText = false,
     this.suffix = false,
+    this.validator,
   }) : super(key: key);
 
   final String fieldName, hintText;
@@ -17,6 +18,7 @@ class CustomField extends StatelessWidget {
   final TextInputType textInputType;
   final bool obscureText, suffix;
   final VoidCallback? visibility;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class CustomField extends StatelessWidget {
           textInputAction: textInputAction,
           keyboardType: textInputType,
           obscureText: obscureText,
-          // validator: ,
+          validator: validator,
           decoration: InputDecoration(
             suffixIcon: suffix
                 ? IconButton(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'home_screen.dart';
+import 'http_service.dart';
 import 'widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -23,6 +24,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool obscureText = true;
+  String userId = '';
+
+  HttpService _httpService = HttpService();
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +50,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 40,
                 ),
-                const CustomField(
-                  fieldName: 'Username',
-                  hintText: 'Enter your username',
-                  textInputAction: TextInputAction.next,
-                  textInputType: TextInputType.name,
-                ),
                 CustomField(
-                  suffix: true,
-                  fieldName: 'Password',
-                  hintText: 'Enter your password',
-                  textInputAction: TextInputAction.done,
-                  textInputType: TextInputType.text,
-                  obscureText: obscureText,
-                  visibility: () {
+                  fieldName: 'User Id',
+                  hintText: 'Enter your Id',
+                  textInputAction: TextInputAction.next,
+                  textInputType: TextInputType.number,
+                  validator: (value) {
                     setState(() {
-                      obscureText = !obscureText;
+                      userId = value!;
                     });
                   },
                 ),
@@ -69,10 +65,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: InkWell(
                     onTap: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        HomeScreen.routeName,
-                      );
+                      _formKey.currentState!.save();
+                      if (_formKey.currentState!.validate()) {
+                        // final user = _httpService.getData(userId);
+                        Navigator.pushReplacementNamed(
+                          context,
+                          HomeScreen.routeName,
+                          arguments: userId,
+                        );
+                      }
                     },
                     child: Container(
                       height: 44,
@@ -86,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            'Sign In',
+                            'Check',
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,

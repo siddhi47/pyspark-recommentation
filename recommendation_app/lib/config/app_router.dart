@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recommendation_app/models/models.dart';
 
 import '../home_screen.dart';
 import '../login_screen.dart';
@@ -9,7 +10,10 @@ class AppRouter {
 
     switch (settings.name) {
       case HomeScreen.routeName:
-        return HomeScreen.route();
+        return HomeScreen.route(
+          userId: settings.arguments as String,
+        );
+      // userModel: settings.arguments as Future<UserModel>);
 
       case LoginScreen.routeName:
         return LoginScreen.route();
