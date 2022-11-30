@@ -8,5 +8,5 @@ setup(
         "pyspark",
     ],
     description="Recommendation systems using pyspark",
-    authors=["Gaurab Subedi", "Siddhi Kiran Bajracharya", "Unish Rarnikar"],
+    authors=["Gaurab Subedi", "Siddhi Kiran Bajracharya", "Unish Rajkarnikar"],
 )
