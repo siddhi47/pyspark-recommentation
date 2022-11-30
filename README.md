@@ -16,7 +16,7 @@ This is a graduate project for Distributed Systems.
 
 ## Instruction
 
-Install Java 8. We will be isntalling java 8 using the sdkman.
+Install Java 8. We will be installing java 8 using the [sdkman](https://sdkman.io).
 
 ```
 curl -s “https://get.sdkman.io" | bash
@@ -45,6 +45,6 @@ sdk install java 8.0.352-amzn
 ```
 
 ## Authors
-- Gaurab Subedi
-- Siddhi Kiran Bajracharya
-- Unish Rajkarnikar
+- [Gaurab Subedi](mailto:gaurab.subedi@coyotes.usd.edu)
+- [Siddhi Kiran Bajracharya](mailto:siddhi.bajracharya@coyotes.usd.edu)
+- [Unish Rajkarnikar](mailto:unish.rajkarnikar@coyotes.usd.edu)

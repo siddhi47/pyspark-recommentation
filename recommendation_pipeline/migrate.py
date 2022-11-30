@@ -66,3 +66,4 @@ def migrate_to_mongo_from_s3(
         logger.info("Uploaded file to mongodb")
     except Exception as e:
         logger.error("Upload failed", e)
+
